@@ -31,6 +31,11 @@ The term `rect` comes from the fact that this application has four main points, 
 
 (totally subject to radical change)
 
+2 main components:
+
+1. a runtime (flash cards, quiz web gui)
+2. a build process (ML inputs -> outputs process, stored offline or in supabase)
+
 for the hackathon, we are prioritizing quiz generation because it pairs nicely with using Supabase. Ideally we get to all features, but this is the initial North Star. AI stuff in Python, GUIs in React+TypeScript using Blitz stack+Prisma+Supabase.
 
 1. TikToks are uploaded to Google Drive via [Repurpose.io](https://repurpose.io/)
@@ -62,6 +67,9 @@ we are using it for auth, and also maybe a few other things:
 3. save who passed what version of quiz/cert
 
 ## running the app 🏃
+
+1. get postgres db creds and put them in a `.env.local` file. Use `.env` as a template. I recommend [Supabase](https://supabase.com/).
+2. `yarn && blitz prisma migrate dev && blitz dev`
 
 ## contributing 💖
 
