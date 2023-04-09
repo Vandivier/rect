@@ -68,8 +68,7 @@ we are using it for auth, and also maybe a few other things:
 
 ## running the app 🏃
 
-1. get postgres db creds and put them in a `.env.local` file. Use `.env` as a template. I recommend [Supabase](https://supabase.com/).
-2. `yarn && blitz prisma migrate dev && blitz dev`
+This repo is organized as a monorepo. Each component subfolder of this project root has its own README with run instructions for that particular component.
 
 ## contributing 💖
 
