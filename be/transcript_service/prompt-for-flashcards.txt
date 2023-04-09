@@ -1,0 +1,27 @@
+
+        consider the following web video transcripts, dileneated by their sourcePlatformId.
+        the sourcePlatformName for all of these is "YouTube Shorts".
+        please generate at least two flash cards per transcript,
+        and ten in total.
+        a flash card has a question on the front and the answer on the back.
+        organize the flash cards as JSON data following the format below:
+        ```Prisma
+            model FlashCard {
+                frontText String
+                backText  String
+
+                sourcePlatformId   String
+                sourcePlatformName String
+            }
+        ```
+        
+url: https://youtube.com/shorts/6C9JsyfDBe8
+text: so if you're interested in coding building projects is a really good idea whether you're trying to learn a new skill or grow your portfolio but what kind of projects should you build there's a few different kinds the first one is a basic boring pet project on screen here you can see pros and cons to this kind of project follow for the other two
+url: https://youtube.com/shorts/pmgYUxba0cc
+text: if you're interested in building a programming project the second kind of project you can think about is one that's interesting to you or it solves a problem that you're missing pros and cons to this kind of project constantly here there are three times in total though so tap the comments to see the first one follow for the third one
+url: https://youtube.com/shorts/t4Kndozwnms
+text: if you're interested in coding building projects is a powerful tool for career advancement in this video we're going to talk about other oriented projects see the comment for the other two kinds on screen here are four kinds of other oriented projects in their pros and cons still not sure where to start follow for part four
+url: https://youtube.com/shorts/1Vv0PkSsA0k
+text: if you're interested in coding projects are a great way to help you land a job grow your skills accelerate your career we've been talking about three different kinds of coding projects and their pros and cons hopefully that helped you pick the next project that you want to work on but maybe you thought about those pros and cons and you're still not sure you want a specific recommendation for a project to work on I'll answer that question in this video I also want to point you to the open source educational curriculum called laterally slides on GitHub right here and it also answers this question and more the next project that you should work on depends on whether you're trying to grow skills or show skills that you already have if you're trying to grow skills reach for the basic boring pet project if you're trying to show skills that's not going to do the job try to help someone else out and solve their problem or solve your own problem for the basic boring Pet Project I specifically recommend blogs even if you have no experience coding you understand what a Blog is what it does and other people will understand what you're trying to do as well so it's a great portfolio piece follow for more
+url: https://youtube.com/shorts/-1vqVgtjDOM
+text: huge secret for job search and career advancement in this video if you ever feel like people with these really high paying jobs often have some sort of unfair Advantage almost like they had a cheat code yeah we don't hide it very well the truth is we do so you can't compete with us right wrong you can just cheat right back go ahead call your old friend or your uncle or whoever it is even if you're not that tight just because you heard that their company has a job that you want go ahead add that extra sentence to your resume even if it's totally unnecessary and you're totally doing it just to stuff an extra keyword in go ahead write the cover letter with an extra unnecessary compliment that makes it seem like you're way into that company when really they're only your third choice go ahead when you get a take-home coding assignment go to Google and see if someone else has already solved this problem just make sure when you copy it it's not like full of bugs or something social networking strategic communication literally copying code these are the cheat codes that are industry norms and I'm giving you full permission I'm encouraging you to use them all of them follow for more
