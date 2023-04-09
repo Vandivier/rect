@@ -142,8 +142,8 @@ node_modules
 web_modules/
 
 # blitz
-/.blitz/
-/.next/
+**.blitz/
+**.next/
 *.sqlite
 *.sqlite-journal
 .now
