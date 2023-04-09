@@ -20,3 +20,7 @@ poetry env list
 poetry install
 python main.py
 ```
+
+## contributing
+
+run the black formatter on your code like `black .` from the `transcript_service/` dir
