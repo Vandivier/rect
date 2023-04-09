@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "transcript-service"
+version = "0.1.0"
+description = ""
+authors = ["Vandivier <john@afterecon.com>"]
+license = "MIT"
+readme = "README.md"
+packages = [{include = "transcript_service"}]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+youtube-transcript-api = "^0.5.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
