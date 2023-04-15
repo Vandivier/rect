@@ -30,7 +30,7 @@ def get_flashcards_file_substr() -> str:
     with open(f"outputs/prompt-for-{file_substr}.txt", "w") as f:
         f.write(
             """
-        consider the following web video transcripts, dileneated by their sourcePlatformId.
+        consider the following web video transcripts, dileneated by their url which ends in a sourcePlatformId.
         the sourcePlatformName for all of these is "YouTube Shorts".
         please generate at least two flash cards per transcript,
         and ten in total.
@@ -53,38 +53,77 @@ def get_flashcards_file_substr() -> str:
 def get_quizzes_file_substr() -> str:
     file_substr = "quizzes"
     with open(f"outputs/prompt-for-{file_substr}.txt", "w") as f:
-        f.write(
-            """
-        consider the following web video transcripts, dileneated by their sourcePlatformId.
-        the sourcePlatformName for all of these is "YouTube Shorts".
-        please generate at least one QuizItem per transcript,
-        and ten in total.
-        these ten QuizItems should be organized into a single Quiz.
-        a flash card has a question on the front and the answer on the back.
-        organize the flash cards as JSON data following the format below:
-        ```Prisma
-            model PossibleAnswer {
-                id   Int
-                text String
-            }
+        f.write("""
+consider the following web video transcripts, dileneated by their url which ends in a sourcePlatformId.
+the sourcePlatformName for all of these is "YouTube Shorts".
+please generate at least one QuizItem per transcript,
+and ten in total.
+these ten QuizItems should be organized into a single Quiz.
+a flash card has a question on the front and the answer on the back.
+organize the flash cards as JSON data following the format below:
+```Prisma
+    model PossibleAnswer {
+        id   Int
+        text String
+    }
 
-            model QuizItem {
-                id           Int
-                questionText        String
-                correctAnswerId     String
-                possibleAnswerIds   Int[]
-            }
+    model QuizItem {
+        id           Int
+        questionText        String
+        correctAnswerId     String
+        possibleAnswerIds   Int[]
+    }
 
-            model Quiz {
-                id                 Int
-                quizItemIds        Int[]
-                sourcePlatformId   String
-                sourcePlatformName String
-            }
-        ```
+    model Quiz {
+        id                 Int
+        quizItemIds        Int[]
+        sourcePlatformId   String
+        sourcePlatformName String
+    }
+```
         """
         )
     return file_substr
+
+
+def get_slides_file_substr() -> str:
+    file_substr = "slides"
+    with open(f"outputs/prompt-for-{file_substr}.txt", "w") as f:
+        f.write(
+            """
+I have an index.html file that appropriately includes reveal.js with the RevealMarkdown plugin. The file includes the following HTML snippet:
+```
+                <section data-markdown="CURRICULUM.md"></section>
+```
+
+Please provide the content for CURRICULUM.md that will allow me to render a slideshow.
+
+The first slide should be a title slide. The second slide should have a table of contents.
+
+Include at least one relevant hyperlink on each slide the directs the viewer to a valuable external resource or a citation for a statement on the slide. Hyperlinks should always open in a new tab.
+
+With reveal.js, we can write a Markdown link that opens in a new tab using a special comment syntax like this: `<!-- .element: target="_blank" -->`. For example, consider the following slide Markdown snippet that makes use of this syntax:
+```
+### Interview Prep Stack
+
+1. The Ladderly Curriculum. In Particular:
+    - <a href="#job-search">The Job Search Section</a><!-- .element: target="_blank" -->
+    - <a href="#external-resources">The External Resources Section</a><!-- .element: target="_blank" -->
+2. [Starboi](https://github.com/Vandivier/starboi), for Behavioral Interview Prep<!-- .element: target="_blank" -->
+3. [Endorsed Communities](https://github.com/Vandivier/ladderly-slides/blob/main/docs/ENDORSED-COMMUNITIES.md)<!-- .element: target="_blank" -->, for social help
+
+---
+```
+
+This slideshow is meant to capture the information contained in the following web video transcripts,
+dileneated by their url which ends in a sourcePlatformId.
+the sourcePlatformName for all of these is "YouTube Shorts".
+
+please generate at least one slide per transcript, and no more than three per transcript.
+        """
+        )
+    return file_substr
+
 
 
 async def main() -> None:
@@ -101,7 +140,8 @@ async def main() -> None:
     counter = 0
     flashcards_file_substr = get_flashcards_file_substr()
     quizzes_file_substr = get_quizzes_file_substr()
-    prompt_substrs: List[str] = [flashcards_file_substr, quizzes_file_substr]
+    slides_file_substr = get_slides_file_substr()
+    prompt_substrs: List[str] = [flashcards_file_substr, quizzes_file_substr, slides_file_substr]
 
     for video_id in video_ids:
         transcript: List[TimeRangeWithText] = YouTubeTranscriptApi.get_transcript(
@@ -118,6 +158,10 @@ async def main() -> None:
             f.write(f"\ntext: {prompt_text}")
 
         with open(f"outputs/prompt-for-{quizzes_file_substr}.txt", "a") as f:
+            f.write(f"\nurl: https://youtube.com/shorts/{video_id}")
+            f.write(f"\ntext: {prompt_text}")
+
+        with open(f"outputs/prompt-for-{slides_file_substr}.txt", "a") as f:
             f.write(f"\nurl: https://youtube.com/shorts/{video_id}")
             f.write(f"\ntext: {prompt_text}")
 

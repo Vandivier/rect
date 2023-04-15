@@ -1,31 +1,31 @@
 
-        consider the following web video transcripts, dileneated by their sourcePlatformId.
-        the sourcePlatformName for all of these is "YouTube Shorts".
-        please generate at least one QuizItem per transcript,
-        and ten in total.
-        these ten QuizItems should be organized into a single Quiz.
-        a flash card has a question on the front and the answer on the back.
-        organize the flash cards as JSON data following the format below:
-        ```Prisma
-            model PossibleAnswer {
-                id   Int
-                text String
-            }
+consider the following web video transcripts, dileneated by their url which ends in a sourcePlatformId.
+the sourcePlatformName for all of these is "YouTube Shorts".
+please generate at least one QuizItem per transcript,
+and ten in total.
+these ten QuizItems should be organized into a single Quiz.
+a flash card has a question on the front and the answer on the back.
+organize the flash cards as JSON data following the format below:
+```Prisma
+    model PossibleAnswer {
+        id   Int
+        text String
+    }
 
-            model QuizItem {
-                id           Int
-                questionText        String
-                correctAnswerId     String
-                possibleAnswerIds   Int[]
-            }
+    model QuizItem {
+        id           Int
+        questionText        String
+        correctAnswerId     String
+        possibleAnswerIds   Int[]
+    }
 
-            model Quiz {
-                id                 Int
-                quizItemIds        Int[]
-                sourcePlatformId   String
-                sourcePlatformName String
-            }
-        ```
+    model Quiz {
+        id                 Int
+        quizItemIds        Int[]
+        sourcePlatformId   String
+        sourcePlatformName String
+    }
+```
         
 url: https://youtube.com/shorts/6C9JsyfDBe8
 text: so if you're interested in coding building projects is a really good idea whether you're trying to learn a new skill or grow your portfolio but what kind of projects should you build there's a few different kinds the first one is a basic boring pet project on screen here you can see pros and cons to this kind of project follow for the other two

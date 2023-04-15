@@ -1,19 +1,33 @@
 
-        consider the following web video transcripts, dileneated by their url which ends in a sourcePlatformId.
-        the sourcePlatformName for all of these is "YouTube Shorts".
-        please generate at least two flash cards per transcript,
-        and ten in total.
-        a flash card has a question on the front and the answer on the back.
-        organize the flash cards as JSON data following the format below:
-        ```Prisma
-            model FlashCard {
-                frontText String
-                backText  String
+I have an index.html file that appropriately includes reveal.js with the RevealMarkdown plugin. The file includes the following HTML snippet:
+```
+                <section data-markdown="CURRICULUM.md"></section>
+```
 
-                sourcePlatformId   String
-                sourcePlatformName String
-            }
-        ```
+Please provide the content for CURRICULUM.md that will allow me to render a slideshow.
+
+The first slide should be a title slide. The second slide should have a table of contents.
+
+Include at least one relevant hyperlink on each slide the directs the viewer to a valuable external resource or a citation for a statement on the slide. Hyperlinks should always open in a new tab.
+
+With reveal.js, we can write a Markdown link that opens in a new tab using a special comment syntax like this: `<!-- .element: target="_blank" -->`. For example, consider the following slide Markdown snippet that makes use of this syntax:
+```
+### Interview Prep Stack
+
+1. The Ladderly Curriculum. In Particular:
+    - <a href="#job-search">The Job Search Section</a><!-- .element: target="_blank" -->
+    - <a href="#external-resources">The External Resources Section</a><!-- .element: target="_blank" -->
+2. [Starboi](https://github.com/Vandivier/starboi), for Behavioral Interview Prep<!-- .element: target="_blank" -->
+3. [Endorsed Communities](https://github.com/Vandivier/ladderly-slides/blob/main/docs/ENDORSED-COMMUNITIES.md)<!-- .element: target="_blank" -->, for social help
+
+---
+```
+
+This slideshow is meant to capture the information contained in the following web video transcripts,
+dileneated by their url which ends in a sourcePlatformId.
+the sourcePlatformName for all of these is "YouTube Shorts".
+
+please generate at least one slide per transcript, and no more than three per transcript.
         
 url: https://youtube.com/shorts/6C9JsyfDBe8
 text: so if you're interested in coding building projects is a really good idea whether you're trying to learn a new skill or grow your portfolio but what kind of projects should you build there's a few different kinds the first one is a basic boring pet project on screen here you can see pros and cons to this kind of project follow for the other two
