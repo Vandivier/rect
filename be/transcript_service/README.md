@@ -4,13 +4,21 @@ this service takes social media content, extracts text for LLMs, and then houses
 
 ## installing and running the service
 
-install poetry and navigate to the `transcript_service` directory.
+install poetry and navigate to the `transcript_service` directory. Run:
 
-for VS Code, consider running:
+```bash
+poetry config virtualenvs.in-project true
+poetry install
+```
+
+With `virtualenvs` configured that way, when you `poetry install`, a local `.venv` folder is created. You can verify this by running `ls -a`.
+
+Now, reference the Python binary inside that `.venv` as your IDE Python interpreter in order for your IDE to access the poetry installed module context. In VS Code, the shortcut is `cmd+shift+p` and you will want to make sure the Python extension is installed.
+
+now you can either `poetry run` your commands, or open a poetry shell to get access to all the modules in the poetry virtual context, which i recommend:
 
 ```bash
 poetry shell
-poetry config virtualenvs.in-project true
 ```
 
 then you can (ctrl / cmd)+shift+p and pick `Python: Select Interpreter` and pick the path within `transcript_service/.venv`
