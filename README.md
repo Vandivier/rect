@@ -14,7 +14,7 @@ Get Rect!! or smth... plz pr a better tagline
 
 ## background ✨
 
-This application is an entry into the 2023 Supabase Hackathon on the theme of AI.
+This application is an entry into the [2023 Supabase Hackathon on the theme of AI](https://supabase.com/blog/launch-week-7-hackathon).
 
 This solves a meaningful problem for open source educational development at [Ladderly](https://ladderly.io/).
 
