@@ -1,5 +1,9 @@
 # rect transcript_service
 
+this service takes social media content, extracts text for LLMs, and then houses the output of LLM interactions.
+
+## installing and running the service
+
 install poetry and navigate to the `transcript_service` directory.
 
 for VS Code, consider running:
@@ -17,10 +21,26 @@ next, confirm poetry is active by running:
 
 ```bash
 poetry env list
-poetry install
-python main.py
+```
+
+Once poetry is confirmed to be running, you can run the main file as follows:
+
+```bash
+poetry run python main.py
 ```
 
 ## contributing
 
 run the black formatter on your code like `black .` from the `transcript_service/` dir
+
+## output generation
+
+output generation is currently largely manual. Here are the steps:
+
+1. Run the main file as described in `installing and running the service`
+   a. This should result in the creation of outputs like `prompt-*.txt`
+2. Take the prompts one-by-one and run them through ChatGPT
+   a. Currently, the per-request token limit on ChatGPT GUI submission appears to be about 4,500 tokens.
+   b. Educational units are broken up such that the core ladderly-slide CURRICULUM.md f
+3. output `.json` files are constructed as the result of LLM processing of the associated `.txt` file.
+   a. For example, ChatGPT will consume `prompt-for-quizzes.txt` and the response, provided it is well-formed, is saved as `quizzes.json`
