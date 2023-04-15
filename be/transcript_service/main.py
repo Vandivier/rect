@@ -27,7 +27,7 @@ async def get_llm_reply(query: str) -> str:
 
 def get_flashcards_file_substr() -> str:
     file_substr = "flashcards"
-    with open(f"prompt-for-{file_substr}.txt", "w") as f:
+    with open(f"outputs/prompt-for-{file_substr}.txt", "w") as f:
         f.write(
             """
         consider the following web video transcripts, dileneated by their sourcePlatformId.
@@ -52,7 +52,7 @@ def get_flashcards_file_substr() -> str:
 
 def get_quizzes_file_substr() -> str:
     file_substr = "quizzes"
-    with open(f"prompt-for-{file_substr}.txt", "w") as f:
+    with open(f"outputs/prompt-for-{file_substr}.txt", "w") as f:
         f.write(
             """
         consider the following web video transcripts, dileneated by their sourcePlatformId.
@@ -113,11 +113,11 @@ async def main() -> None:
         transcript_text = " ".join([item["text"] for item in transcript])
         prompt_text = transcript_text
 
-        with open(f"prompt-for-{flashcards_file_substr}.txt", "a") as f:
+        with open(f"outputs/prompt-for-{flashcards_file_substr}.txt", "a") as f:
             f.write(f"\nurl: https://youtube.com/shorts/{video_id}")
             f.write(f"\ntext: {prompt_text}")
 
-        with open(f"prompt-for-{quizzes_file_substr}.txt", "a") as f:
+        with open(f"outputs/prompt-for-{quizzes_file_substr}.txt", "a") as f:
             f.write(f"\nurl: https://youtube.com/shorts/{video_id}")
             f.write(f"\ntext: {prompt_text}")
 

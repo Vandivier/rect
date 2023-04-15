@@ -1,0 +1,64 @@
+{
+  "flashCards": [
+    {
+      "frontText": "What are the three kinds of coding projects mentioned in the videos?",
+      "backText": "1. Basic boring pet project, 2. Personal interest or problem-solving project, 3. Other-oriented projects.",
+      "sourcePlatformId": "6C9JsyfDBe8",
+      "sourcePlatformName": "YouTube Shorts"
+    },
+    {
+      "frontText": "What are some pros and cons of a basic boring pet project?",
+      "backText": "Pros: Easy to understand, good for learning. Cons: Not very unique or interesting.",
+      "sourcePlatformId": "6C9JsyfDBe8",
+      "sourcePlatformName": "YouTube Shorts"
+    },
+    {
+      "frontText": "What are the benefits of a personal interest or problem-solving project?",
+      "backText": "These projects are more interesting, can solve real-life problems, and showcase your passion and creativity.",
+      "sourcePlatformId": "pmgYUxba0cc",
+      "sourcePlatformName": "YouTube Shorts"
+    },
+    {
+      "frontText": "What are other-oriented projects and their benefits?",
+      "backText": "Other-oriented projects are those that aim to help or serve others. Benefits include collaboration, increased impact, and showcasing empathy.",
+      "sourcePlatformId": "t4Kndozwnms",
+      "sourcePlatformName": "YouTube Shorts"
+    },
+    {
+      "frontText": "Which project type is recommended if you're trying to grow your skills?",
+      "backText": "Basic boring pet project.",
+      "sourcePlatformId": "1Vv0PkSsA0k",
+      "sourcePlatformName": "YouTube Shorts"
+    },
+    {
+      "frontText": "Which project type is recommended if you're trying to showcase your existing skills?",
+      "backText": "Helping others by solving their problems or working on a personal interest project.",
+      "sourcePlatformId": "1Vv0PkSsA0k",
+      "sourcePlatformName": "YouTube Shorts"
+    },
+    {
+      "frontText": "What is a recommended basic boring pet project for a beginner?",
+      "backText": "A blog, as it is easy to understand, relatable, and can be a good portfolio piece.",
+      "sourcePlatformId": "1Vv0PkSsA0k",
+      "sourcePlatformName": "YouTube Shorts"
+    },
+    {
+      "frontText": "What is the 'huge secret' for job search and career advancement?",
+      "backText": "Using cheat codes like social networking, strategic communication, and finding solutions online.",
+      "sourcePlatformId": "-1vqVgtjDOM",
+      "sourcePlatformName": "YouTube Shorts"
+    },
+    {
+      "frontText": "Why is it acceptable to use 'cheat codes' in job search and career advancement?",
+      "backText": "Because they are industry norms, and using them effectively can help level the playing field.",
+      "sourcePlatformId": "-1vqVgtjDOM",
+      "sourcePlatformName": "YouTube Shorts"
+    },
+    {
+      "frontText": "What should you be cautious about when using found code for a take-home coding assignment?",
+      "backText": "Make sure the code is not full of bugs or directly plagiarized.",
+      "sourcePlatformId": "-1vqVgtjDOM",
+      "sourcePlatformName": "YouTube Shorts"
+    }
+  ]
+}
