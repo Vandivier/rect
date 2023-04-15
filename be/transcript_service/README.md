@@ -62,3 +62,5 @@ output generation is currently largely manual. Here are the steps:
    a. For example, ChatGPT will consume `prompt-for-quizzes.txt` and the response, provided it is well-formed, is saved as `quizzes.json`
 
    b. It's common and expected that rect users, acting as [prompt engineers](https://en.wikipedia.org/wiki/Prompt_engineering), will need to prompt ChatGPT to "continue" in order to receive completed outputs.
+
+   c. Please test the output and repair as needed. It's not uncommon to need to fix a title anchor link from the slide table of contents to its section start slide, for example.

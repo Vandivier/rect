@@ -8,9 +8,10 @@ from youtube_transcript_api import YouTubeTranscriptApi
 import openai
 
 # Replace 'custom_path/.env' with the path to your custom env file
-custom_path = './.env'
+custom_path = "./.env"
 load_dotenv(dotenv_path=custom_path)
 openai.api_key = os.getenv("OPENAI_API_KEY")
+
 
 async def get_llm_reply(query: str) -> str:
     message = "No message"
@@ -53,7 +54,8 @@ def get_flashcards_file_substr() -> str:
 def get_quizzes_file_substr() -> str:
     file_substr = "quizzes"
     with open(f"outputs/prompt-for-{file_substr}.txt", "w") as f:
-        f.write("""
+        f.write(
+            """
 consider the following web video transcripts, dileneated by their url which ends in a sourcePlatformId.
 the sourcePlatformName for all of these is "YouTube Shorts".
 please generate at least one QuizItem per transcript,
@@ -125,23 +127,23 @@ please generate at least one slide per transcript, and no more than three per tr
     return file_substr
 
 
-
 async def main() -> None:
     TimeRangeWithText = Dict[str, Union[float, str]]
-    video_ids = [
-        "6C9JsyfDBe8",
-        "pmgYUxba0cc",
-        "t4Kndozwnms",
-        "1Vv0PkSsA0k",
-        "-1vqVgtjDOM",
-    ]
 
+    with open(f"./social_source_map.json") as f:
+        curriculum_units = json.load(f)
+        # TODO: support all units, not just the first one
+        video_ids = curriculum_units[0].get("video_ids", [])
 
     counter = 0
     flashcards_file_substr = get_flashcards_file_substr()
     quizzes_file_substr = get_quizzes_file_substr()
     slides_file_substr = get_slides_file_substr()
-    prompt_substrs: List[str] = [flashcards_file_substr, quizzes_file_substr, slides_file_substr]
+    prompt_substrs: List[str] = [
+        flashcards_file_substr,
+        quizzes_file_substr,
+        slides_file_substr,
+    ]
 
     for video_id in video_ids:
         transcript: List[TimeRangeWithText] = YouTubeTranscriptApi.get_transcript(
@@ -171,15 +173,20 @@ async def main() -> None:
                 parsed = json.loads(reply)
 
                 if not parsed:
-                    print(f"Error: invalid reply for {prompt_substr}. writing to file anyway")
+                    print(
+                        f"Error: invalid reply for {prompt_substr}. writing to file anyway"
+                    )
 
                 with open(f"{prompt_substr}.json", "w") as f:
                     f.write(reply)
         elif counter == 0:
-            print("Error: OpenAI API key not found. Please manually submit the prompts to ChatGPT, as described in the README.")
+            print(
+                "Error: OpenAI API key not found. Please manually submit the prompts to ChatGPT, as described in the README."
+            )
 
         counter += 1
         print(f"Finished {counter} of {len(video_ids)} videos.")
+
 
 if __name__ == "__main__":
     asyncio.run(main())
