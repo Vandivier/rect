@@ -46,6 +46,7 @@ const FlashCardDeck: React.FC = () => {
 
   return currCard ? (
     <div>
+      <h2>Study Up with Flash Cards!</h2>
       <FlashCard
         backText={currCard.backText}
         frontText={currCard.frontText}
