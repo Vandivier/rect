@@ -26,34 +26,48 @@ async def get_llm_reply(query: str) -> str:
     return message
 
 
-def get_flashcards_file_substr() -> str:
-    file_substr = "flashcards"
+def get_chat_file_substr(count_of_units: int) -> str:
+    file_substr = "chat"
     with open(f"outputs/prompt-for-{file_substr}.txt", "w") as f:
         f.write(
-            """
-        consider the following web video transcripts, dileneated by their url which ends in a sourcePlatformId.
-        the sourcePlatformName for all of these is "YouTube Shorts".
-        please generate at least two flash cards per transcript,
-        and ten in total.
-        a flash card has a question on the front and the answer on the back.
-        organize the flash cards as JSON data following the format below:
-        ```Prisma
-            model FlashCard {
-                frontText String
-                backText  String
-
-                sourcePlatformId   String
-                sourcePlatformName String
-            }
-        ```
-        """
+            f"""
+You are a chatbot that is meant to help people learn to code, prioritizing advice prescribed in the Ladderly curriculum.
+Consider the following web video transcripts, dileneated by their url which ends in a sourcePlatformId.
+These transcripts constitute the Ladderly curriculum.
+simply respond by saying:
+"I have loaded {count_of_units} units of Ladderly curriculum into my memory. How can I help you?"
+"""
         )
     return file_substr
 
 
-def get_quizzes_file_substr() -> str:
+def get_flashcards_file_substr(file_suffix: str) -> str:
+    file_substr = "flashcards"
+    with open(f"outputs/prompt-for-{file_substr}-{file_suffix}.txt", "w") as f:
+        f.write(
+            """
+consider the following web video transcripts, dileneated by their url which ends in a sourcePlatformId.
+the sourcePlatformName for all of these is "YouTube Shorts".
+please generate at least two flash cards per transcript,
+and ten in total.
+a flash card has a question on the front and the answer on the back.
+organize the flash cards as JSON data following the format below:
+```Prisma
+    model FlashCard {
+        frontText String
+        backText  String
+
+        sourcePlatformId   String
+        sourcePlatformName String
+    }
+```"""
+        )
+    return file_substr
+
+
+def get_quizzes_file_substr(file_suffix: str) -> str:
     file_substr = "quizzes"
-    with open(f"outputs/prompt-for-{file_substr}.txt", "w") as f:
+    with open(f"outputs/prompt-for-{file_substr}-{file_suffix}.txt", "w") as f:
         f.write(
             """
 consider the following web video transcripts, dileneated by their url which ends in a sourcePlatformId.
@@ -82,15 +96,14 @@ organize the flash cards as JSON data following the format below:
         sourcePlatformId   String
         sourcePlatformName String
     }
-```
-        """
+```"""
         )
     return file_substr
 
 
-def get_slides_file_substr() -> str:
+def get_slides_file_substr(file_suffix: str) -> str:
     file_substr = "slides"
-    with open(f"outputs/prompt-for-{file_substr}.txt", "w") as f:
+    with open(f"outputs/prompt-for-{file_substr}-{file_suffix}.txt", "w") as f:
         f.write(
             """
 I have an index.html file that appropriately includes reveal.js with the RevealMarkdown plugin. The file includes the following HTML snippet:
@@ -122,70 +135,92 @@ dileneated by their url which ends in a sourcePlatformId.
 the sourcePlatformName for all of these is "YouTube Shorts".
 
 please generate at least one slide per transcript, and no more than three per transcript.
-        """
+"""
         )
     return file_substr
 
 
 async def main() -> None:
+    has_not_shown_open_api_error = True
     TimeRangeWithText = Dict[str, Union[float, str]]
 
     with open(f"./social_source_map.json") as f:
         curriculum_units = json.load(f)
-        # TODO: support all units, not just the first one
-        video_ids = curriculum_units[0].get("video_ids", [])
+        count_of_curriculum_units = len(curriculum_units)
 
-    counter = 0
-    flashcards_file_substr = get_flashcards_file_substr()
-    quizzes_file_substr = get_quizzes_file_substr()
-    slides_file_substr = get_slides_file_substr()
-    prompt_substrs: List[str] = [
-        flashcards_file_substr,
-        quizzes_file_substr,
-        slides_file_substr,
-    ]
+    chat_file_substr = get_chat_file_substr(count_of_curriculum_units)
+    for unit_index, edu_unit in enumerate(curriculum_units):
+        video_ids = edu_unit.get("video_ids", [])
 
-    for video_id in video_ids:
-        transcript: List[TimeRangeWithText] = YouTubeTranscriptApi.get_transcript(
-            video_id, languages=["en"]
-        )
+        unverified_unit_id = edu_unit.get("id", None)
+        if not isinstance(unverified_unit_id, (str, int)) or not unverified_unit_id:
+            raise ValueError("unit_id must be a truthy string or int")
+        unit_id = str(unverified_unit_id)
 
-        # idk if space joining is necessary before sending to LLM
-        # but, i did so it looks the same as what I manually pasted into ChatGPT UI
-        transcript_text = " ".join([item["text"] for item in transcript])
-        prompt_text = transcript_text
+        flashcards_file_substr = get_flashcards_file_substr(unit_id)
+        quizzes_file_substr = get_quizzes_file_substr(unit_id)
+        slides_file_substr = get_slides_file_substr(unit_id)
 
-        with open(f"outputs/prompt-for-{flashcards_file_substr}.txt", "a") as f:
-            f.write(f"\nurl: https://youtube.com/shorts/{video_id}")
-            f.write(f"\ntext: {prompt_text}")
-
-        with open(f"outputs/prompt-for-{quizzes_file_substr}.txt", "a") as f:
-            f.write(f"\nurl: https://youtube.com/shorts/{video_id}")
-            f.write(f"\ntext: {prompt_text}")
-
-        with open(f"outputs/prompt-for-{slides_file_substr}.txt", "a") as f:
-            f.write(f"\nurl: https://youtube.com/shorts/{video_id}")
-            f.write(f"\ntext: {prompt_text}")
-
-        if openai.api_key:
-            for prompt_substr in prompt_substrs:
-                reply = await get_llm_reply(prompt_substr)
-                parsed = json.loads(reply)
-
-                if not parsed:
-                    print(
-                        f"Error: invalid reply for {prompt_substr}. writing to file anyway"
-                    )
-
-                with open(f"{prompt_substr}.json", "w") as f:
-                    f.write(reply)
-        elif counter == 0:
-            print(
-                "Error: OpenAI API key not found. Please manually submit the prompts to ChatGPT, as described in the README."
+        for video_index, video_id in enumerate(video_ids):
+            transcript: List[TimeRangeWithText] = YouTubeTranscriptApi.get_transcript(
+                video_id, languages=["en"]
             )
 
-        counter += 1
-        print(f"Finished {counter} of {len(video_ids)} videos.")
+            # idk if space joining is necessary before sending to LLM
+            # but, i did so it looks the same as what I manually pasted into ChatGPT UI
+            transcript_text = " ".join([item["text"] for item in transcript])
+            prompt_text = transcript_text
+
+            with open(f"outputs/prompt-for-{chat_file_substr}.txt", "a") as f:
+                f.write(f"\nurl: https://youtube.com/shorts/{video_id}")
+                f.write(f"\ntext: {prompt_text}")
+
+            with open(
+                f"outputs/prompt-for-{flashcards_file_substr}-{unit_id}.txt", "a"
+            ) as f:
+                f.write(f"\nurl: https://youtube.com/shorts/{video_id}")
+                f.write(f"\ntext: {prompt_text}")
+
+            with open(
+                f"outputs/prompt-for-{quizzes_file_substr}-{unit_id}.txt", "a"
+            ) as f:
+                f.write(f"\nurl: https://youtube.com/shorts/{video_id}")
+                f.write(f"\ntext: {prompt_text}")
+
+            with open(
+                f"outputs/prompt-for-{slides_file_substr}-{unit_id}.txt", "a"
+            ) as f:
+                f.write(f"\nurl: https://youtube.com/shorts/{video_id}")
+                f.write(f"\ntext: {prompt_text}")
+
+            if openai.api_key:
+                prompt_substrs: List[str] = [
+                    chat_file_substr,
+                    flashcards_file_substr,
+                    quizzes_file_substr,
+                    slides_file_substr,
+                ]
+
+                for prompt_substr in prompt_substrs:
+                    reply = await get_llm_reply(prompt_substr)
+                    parsed = json.loads(reply)
+
+                    if not parsed:
+                        print(
+                            f"Error: invalid reply for {prompt_substr}. writing to file anyway"
+                        )
+
+                    with open(f"{prompt_substr}.json", "w") as f:
+                        f.write(reply)
+            elif has_not_shown_open_api_error:
+                print(
+                    "Error: OpenAI API key not found. Please manually submit the prompts to ChatGPT, as described in the README."
+                )
+                has_not_shown_open_api_error = False
+
+            print(
+                f"Finished {video_index+1} of {len(video_ids)} videos in unit {unit_index+1} of {count_of_curriculum_units}"
+            )
 
 
 if __name__ == "__main__":

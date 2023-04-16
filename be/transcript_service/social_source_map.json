@@ -1,5 +1,6 @@
 [
   {
+    "id": 1,
     "name": "Building a Coding Portfolio",
     "video_ids": [
       "6C9JsyfDBe8",
@@ -7,6 +8,20 @@
       "t4Kndozwnms",
       "1Vv0PkSsA0k",
       "-1vqVgtjDOM"
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Interview Prep",
+    "video_ids": [
+      "6qdP8K1eXP4"
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Developer Mindset",
+    "video_ids": [
+      "AD4l5n8HTPo"
     ]
   }
 ]

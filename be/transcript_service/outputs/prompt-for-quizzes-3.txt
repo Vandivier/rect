@@ -1,0 +1,30 @@
+
+consider the following web video transcripts, dileneated by their url which ends in a sourcePlatformId.
+the sourcePlatformName for all of these is "YouTube Shorts".
+please generate at least one QuizItem per transcript,
+and ten in total.
+these ten QuizItems should be organized into a single Quiz.
+a flash card has a question on the front and the answer on the back.
+organize the flash cards as JSON data following the format below:
+```Prisma
+    model PossibleAnswer {
+        id   Int
+        text String
+    }
+
+    model QuizItem {
+        id           Int
+        questionText        String
+        correctAnswerId     String
+        possibleAnswerIds   Int[]
+    }
+
+    model Quiz {
+        id                 Int
+        quizItemIds        Int[]
+        sourcePlatformId   String
+        sourcePlatformName String
+    }
+```
+url: https://youtube.com/shorts/AD4l5n8HTPo
+text: quick tip if you want to be an awesome developer adopt a test driven development mental model my team was having a CI code quality issue the build would not fail when we expected it to on lint violation someone proposed a fix but how do we prove it works we need it to fail then pass

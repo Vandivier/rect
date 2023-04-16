@@ -1,0 +1,18 @@
+
+consider the following web video transcripts, dileneated by their url which ends in a sourcePlatformId.
+the sourcePlatformName for all of these is "YouTube Shorts".
+please generate at least two flash cards per transcript,
+and ten in total.
+a flash card has a question on the front and the answer on the back.
+organize the flash cards as JSON data following the format below:
+```Prisma
+    model FlashCard {
+        frontText String
+        backText  String
+
+        sourcePlatformId   String
+        sourcePlatformName String
+    }
+```
+url: https://youtube.com/shorts/6qdP8K1eXP4
+text: so you want to get a job coding in 2023 do you really still need to study data structures and algorithms now that we have GPT they can like instantaneously solve any of these problems absolutely yes this is your sign to get back on lead code this is still how we interview we're not done with it yet
