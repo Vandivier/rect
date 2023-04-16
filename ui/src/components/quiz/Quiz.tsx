@@ -18,16 +18,19 @@ type QuizProps = {
 const Quiz: React.FC<QuizProps> = ({ quizName }) => {
   const [quiz] = useQuery(getQuizByName, { name: quizName })
   const [submitQuizResultMutation] = useMutation(submitQuizResult)
+  const [result, setResult] = React.useState<{ passed: boolean; score: number } | null>(null)
 
   const onSubmit = async (values: QuizFormValues) => {
     try {
+      const selectedAnswerIds = Object.fromEntries(
+        Object.entries(values.selectedAnswerIds).map(([key, value]) => [parseInt(key), value])
+      )
+
       const result = await submitQuizResultMutation({
         quizId: quiz.id,
-        selectedAnswerIds: Object.fromEntries(
-          Object.entries(values.selectedAnswerIds).map(([key, value]) => [key, value])
-        ),
+        selectedAnswerIds,
       })
-      console.log("Quiz result:", result)
+      setResult(result)
     } catch (error) {
       console.error("Failed to submit quiz result:", error)
     }
@@ -40,30 +43,49 @@ const Quiz: React.FC<QuizProps> = ({ quizName }) => {
   return (
     <div>
       <h2>{quiz?.name}</h2>
-      <Form
-        onSubmit={onSubmit}
-        render={({ handleSubmit }) => (
-          <form onSubmit={handleSubmit}>
-            {quiz.quizItems.map((quizItem) => (
-              <div key={quizItem.id}>
-                <h3>{quizItem.questionText}</h3>
-                {quizItem.possibleAnswers.map((possibleAnswer: PossibleAnswer) => (
-                  <div key={possibleAnswer.id}>
-                    <Field
-                      name={`selectedAnswerIds[${quizItem.id}]`}
-                      component="input"
-                      type="radio"
-                      value={possibleAnswer.inputId}
-                    />
-                    {possibleAnswer.text}
-                  </div>
-                ))}
-              </div>
-            ))}
-            <button type="submit">Submit</button>
-          </form>
-        )}
-      />
+      {result === null ? (
+        <Form
+          onSubmit={onSubmit}
+          render={({ handleSubmit }) => (
+            <form onSubmit={handleSubmit}>
+              {quiz.quizItems.map((quizItem) => (
+                <div key={quizItem.id}>
+                  <h3>{quizItem.questionText}</h3>
+                  {quizItem.possibleAnswers.map((possibleAnswer: PossibleAnswer) => (
+                    <div key={possibleAnswer.id}>
+                      <Field
+                        name={`selectedAnswerIds[${quizItem.id}]`}
+                        component="input"
+                        type="radio"
+                        value={possibleAnswer.inputId}
+                      />
+                      {possibleAnswer.text}
+                    </div>
+                  ))}
+                </div>
+              ))}
+              <button type="submit">Submit</button>
+            </form>
+          )}
+        />
+      ) : (
+        <div style={{ fontSize: "1.5rem", color: result.passed ? "green" : "red" }}>
+          {result.passed ? (
+            <>
+              🎉 Congratulations! 🎉
+              <p>You passed the quiz with a score of {result.score}%!</p>
+            </>
+          ) : (
+            <>
+              😢 Better luck next time. 😢
+              <p>
+                Keep going and get smarter, and you'll do better next time! Your score was{" "}
+                {result.score}%.
+              </p>
+            </>
+          )}
+        </div>
+      )}
     </div>
   )
 }

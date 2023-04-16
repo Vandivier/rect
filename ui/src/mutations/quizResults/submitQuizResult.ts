@@ -42,6 +42,10 @@ export default resolver.pipe(
         quiz: { connect: { id: quizId } },
         user: { connect: { id: userId } },
       },
+      select: {
+        passed: true,
+        score: true,
+      },
     })
 
     return quizResult
