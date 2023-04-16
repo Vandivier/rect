@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from "react"
-
-import { Form, Field } from "react-final-form"
-import getQuizByName from "src/queries/quizzes/getQuizByName"
-import { PossibleAnswer } from "@prisma/client"
 import { useQuery } from "@blitzjs/rpc"
+import { PossibleAnswer } from "@prisma/client"
+import React, { useEffect, useState } from "react"
+import { Field, Form } from "react-final-form"
+import getQuizByName from "src/queries/quizzes/getQuizByName"
 
 type QuizFormValues = {
   selectedAnswerId: string
@@ -11,7 +10,6 @@ type QuizFormValues = {
 
 type QuizProps = {
   quizName: string
-  onSubmit: (values: QuizFormValues) => void
 }
 
 const Quiz: React.FC<QuizProps> = ({ quizName }) => {
