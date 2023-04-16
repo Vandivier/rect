@@ -97,6 +97,7 @@ model QuizItem {
 model Quiz {
   id                 Int              @id @default(autoincrement())
   inputId            String           @unique
+  name               String           @unique
   quizItems          QuizItem[]       @relation("QuizItemsToQuiz")
   sourcePlatformId   String
   sourcePlatformName String

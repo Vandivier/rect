@@ -1,68 +1,69 @@
 [
   {
     "quiz": {
-      "inputId": 1,
-      "quizItemIds": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+      "inputId": "1",
+      "name": "Coding Projects",
+      "quizItemIds": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"],
       "sourcePlatformId": "YouTube Shorts",
       "sourcePlatformName": "YouTube Shorts"
     },
     "quizItems": [
       {
-        "inputId": 1,
+        "inputId": "1",
         "questionText": "What is the first type of coding project mentioned?",
         "correctAnswerId": "1",
         "possibleAnswerIds": [1, 2, 3]
       },
       {
-        "inputId": 2,
+        "inputId": "2",
         "questionText": "What is the primary purpose of building coding projects?",
         "correctAnswerId": "4",
         "possibleAnswerIds": [4, 5, 6]
       },
       {
-        "inputId": 3,
+        "inputId": "3",
         "questionText": "What type of coding project should you work on if you're trying to grow your skills?",
         "correctAnswerId": "7",
         "possibleAnswerIds": [7, 8, 9]
       },
       {
-        "inputId": 4,
+        "inputId": "4",
         "questionText": "What type of coding project should you work on if you're trying to show your skills?",
         "correctAnswerId": "10",
         "possibleAnswerIds": [10, 11, 12]
       },
       {
-        "inputId": 5,
+        "inputId": "5",
         "questionText": "What is a specific recommendation for a basic, boring pet project?",
         "correctAnswerId": "13",
         "possibleAnswerIds": [13, 14, 15]
       },
       {
-        "inputId": 6,
+        "inputId": "6",
         "questionText": "Which resource is recommended for an open-source educational curriculum?",
         "correctAnswerId": "16",
         "possibleAnswerIds": [16, 17, 18]
       },
       {
-        "inputId": 7,
+        "inputId": "7",
         "questionText": "What is the 'huge secret' for job search and career advancement?",
         "correctAnswerId": "19",
         "possibleAnswerIds": [19, 20, 21]
       },
       {
-        "inputId": 8,
+        "inputId": "8",
         "questionText": "What is an example of a cheat code in the job search?",
         "correctAnswerId": "22",
         "possibleAnswerIds": [22, 23, 24]
       },
       {
-        "inputId": 9,
+        "inputId": "9",
         "questionText": "What is another example of a cheat code in the job search?",
         "correctAnswerId": "25",
         "possibleAnswerIds": [25, 26, 27]
       },
       {
-        "inputId": 10,
+        "inputId": "10",
         "questionText": "Is it encouraged to use cheat codes in the job search?",
         "correctAnswerId": "28",
         "possibleAnswerIds": [28, 29]
