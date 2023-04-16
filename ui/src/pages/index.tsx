@@ -9,6 +9,36 @@ import Layout from "src/core/layouts/Layout"
 import styles from "src/styles/Home.module.css"
 import { useCurrentUser } from "src/users/hooks/useCurrentUser"
 
+const ProfileLink = () => {
+  const currentUser = useCurrentUser()
+
+  return currentUser ? (
+    <Tooltip title="View my Rect profile">
+      <Link
+        href={`/profile/${currentUser.id}`}
+        target="_self"
+        rel="noopener noreferrer"
+        className={styles.card}
+      >
+        View My Public Profile
+        <span className={styles.arrowIcon} />
+      </Link>
+    </Tooltip>
+  ) : (
+    <Tooltip isEmphasized={true} title="Click to sign up and access your unique Rect profile!">
+      <Link
+        href={Routes.SignupPage()}
+        target="_self"
+        rel="noopener noreferrer"
+        className={styles.card}
+      >
+        View My Public Profile
+        <span className={styles.arrowIcon} />
+      </Link>
+    </Tooltip>
+  )
+}
+
 const UserInfo = () => {
   const currentUser = useCurrentUser()
   const [logoutMutation] = useMutation(logout)
@@ -125,7 +155,6 @@ const Home: BlitzPage = () => {
                   </div>
                 </div>
               </div>
-              {/* Links */}
               <div className={styles.linkGrid}>
                 <a
                   href="https://ladderly.io/"
@@ -154,17 +183,9 @@ const Home: BlitzPage = () => {
                   Ladderly Open Curriculum on GitHub
                   <span className={styles.arrowIcon} />
                 </a>
-                <Tooltip title="View my Rect profile">
-                  <a
-                    href="https://github.com/blitz-js/blitz"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={styles.card}
-                  >
-                    View My Public Profile
-                    <span className={styles.arrowIcon} />
-                  </a>
-                </Tooltip>
+                <Suspense fallback="Loading...">
+                  <ProfileLink />
+                </Suspense>
               </div>
             </div>
           </div>

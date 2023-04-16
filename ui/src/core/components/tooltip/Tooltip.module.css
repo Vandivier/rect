@@ -3,6 +3,10 @@
   position: relative;
 }
 
+.tooltip.emphasized {
+  background-color: orange;
+}
+
 .tooltip {
   position: absolute;
   bottom: 100%;

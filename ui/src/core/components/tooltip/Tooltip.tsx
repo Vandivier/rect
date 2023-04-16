@@ -3,11 +3,13 @@ import styles from "./Tooltip.module.css"
 
 interface TooltipProps {
   children: React.ReactNode
+  isEmphasized?: boolean
   title: string
 }
 
-const Tooltip: React.FC<TooltipProps> = ({ children, title }) => {
+const Tooltip: React.FC<TooltipProps> = ({ children, isEmphasized = false, title }) => {
   const [show, setShow] = useState(false)
+  const currStyle = isEmphasized ? styles.tooltip + " " + styles.emphasized : styles.tooltip
 
   return (
     <div
@@ -15,7 +17,7 @@ const Tooltip: React.FC<TooltipProps> = ({ children, title }) => {
       onMouseEnter={() => setShow(true)}
       onMouseLeave={() => setShow(false)}
     >
-      {show && <div className={styles.tooltip}>{title}</div>}
+      {show && <div className={currStyle}>{title}</div>}
       {children}
     </div>
   )
