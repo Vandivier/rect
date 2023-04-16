@@ -3,7 +3,7 @@ import { useMutation } from "@blitzjs/rpc"
 import Link from "next/link"
 import { Suspense } from "react"
 import logout from "src/auth/mutations/logout"
-import FlashCardDeck from "src/components/flash-cards/FlashCardDeck"
+import MainCallToAction from "src/core/components/MainCallToAction"
 import Tooltip from "src/core/components/tooltip/Tooltip"
 import Layout from "src/core/layouts/Layout"
 import styles from "src/styles/Home.module.css"
@@ -86,31 +86,9 @@ const Home: BlitzPage = () => {
             <div className={styles.header}>
               <h1>Welcome to Rect! 🎉🎉</h1>
 
-              <p>TODO: links for flash cards, quizzes, slides, and chat assistant</p>
-
-              <div>
-                <h2 style={{ margin: "auto" }}>Flash Card Deck</h2>
-                <FlashCardDeck />
-              </div>
-
-              <h2>Sign up to get started!</h2>
-              <div style={{ margin: "auto", maxWidth: "600px" }}>
-                <p>
-                  Rect helps you #LearnToCode with flash cards and a chat assistant. Then, share
-                  your achievements 🏆🏆 with a public profile! 🙌
-                </p>
-                <p>
-                  Educational content is based on the{" "}
-                  <a
-                    href="https://github.com/Vandivier/ladderly-slides"
-                    style={{ textDecoration: "underline" }}
-                    target="_blank"
-                  >
-                    open source Ladderly curriculum
-                  </a>
-                  .
-                </p>
-              </div>
+              <Suspense>
+                <MainCallToAction />
+              </Suspense>
 
               <div className={styles.buttonContainer}>
                 <Suspense fallback="Loading...">
