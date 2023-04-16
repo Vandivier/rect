@@ -75,6 +75,7 @@ model FlashCard {
 
 model PossibleAnswer {
   id                 Int       @id @default(autoincrement())
+  inputId            String    @unique
   text               String
   quizItemId         Int
   quizItem           QuizItem  @relation(fields: [quizItemId], references: [id], name: "PossibleAnswersToQuizItem")
@@ -84,6 +85,7 @@ model PossibleAnswer {
 
 model QuizItem {
   id              Int              @id @default(autoincrement())
+  inputId         String           @unique
   questionText    String
   possibleAnswers PossibleAnswer[] @relation("PossibleAnswersToQuizItem")
   correctAnswer   PossibleAnswer?  @relation(fields: [correctAnswerId], references: [id], name: "CorrectAnswerToQuizItem")
@@ -94,6 +96,7 @@ model QuizItem {
 
 model Quiz {
   id                 Int              @id @default(autoincrement())
+  inputId            String           @unique
   quizItems          QuizItem[]       @relation("QuizItemsToQuiz")
   sourcePlatformId   String
   sourcePlatformName String
@@ -103,6 +106,7 @@ model Quiz {
 
 model CurriculumUnit {
   id              Int           @id @default(autoincrement())
+  inputId         String        @unique
   quiz            Quiz          @relation(fields: [quizId], references: [id])
   quizId          Int
   flashCardDeck   FlashCardDeck @relation(fields: [flashCardDeckId], references: [id])
