@@ -86,8 +86,8 @@ model QuizItem {
   id              Int              @id @default(autoincrement())
   questionText    String
   possibleAnswers PossibleAnswer[] @relation("PossibleAnswersToQuizItem")
-  correctAnswer   PossibleAnswer   @relation(fields: [correctAnswerId], references: [id], name: "CorrectAnswerToQuizItem")
-  correctAnswerId Int              @unique
+  correctAnswer   PossibleAnswer?  @relation(fields: [correctAnswerId], references: [id], name: "CorrectAnswerToQuizItem")
+  correctAnswerId Int?             @unique
   quiz            Quiz?            @relation(fields: [quizId], references: [id], name: "QuizItemsToQuiz")
   quizId          Int
 }
