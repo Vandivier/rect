@@ -4,6 +4,7 @@ import Link from "next/link"
 import { Suspense } from "react"
 import logout from "src/auth/mutations/logout"
 import FlashCardDeck from "src/components/flash-cards/FlashCardDeck"
+import Tooltip from "src/core/components/tooltip/Tooltip"
 import Layout from "src/core/layouts/Layout"
 import styles from "src/styles/Home.module.css"
 import { useCurrentUser } from "src/users/hooks/useCurrentUser"
@@ -153,15 +154,17 @@ const Home: BlitzPage = () => {
                   Ladderly Open Curriculum on GitHub
                   <span className={styles.arrowIcon} />
                 </a>
-                <a
-                  href="https://github.com/blitz-js/blitz"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={styles.card}
-                >
-                  View My Public Profile
-                  <span className={styles.arrowIcon} />
-                </a>
+                <Tooltip title="View my Rect profile">
+                  <a
+                    href="https://github.com/blitz-js/blitz"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.card}
+                  >
+                    View My Public Profile
+                    <span className={styles.arrowIcon} />
+                  </a>
+                </Tooltip>
               </div>
             </div>
           </div>
