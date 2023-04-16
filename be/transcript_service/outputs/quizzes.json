@@ -12,178 +12,178 @@
         "inputId": "1",
         "questionText": "What is the first type of coding project mentioned?",
         "correctAnswerId": "1",
-        "possibleAnswerIds": [1, 2, 3]
+        "possibleAnswerInputIds": ["1", "2", "3"]
       },
       {
         "inputId": "2",
         "questionText": "What is the primary purpose of building coding projects?",
         "correctAnswerId": "4",
-        "possibleAnswerIds": [4, 5, 6]
+        "possibleAnswerInputIds": ["4", "5", "6"]
       },
       {
         "inputId": "3",
         "questionText": "What type of coding project should you work on if you're trying to grow your skills?",
         "correctAnswerId": "7",
-        "possibleAnswerIds": [7, 8, 9]
+        "possibleAnswerInputIds": ["7", "8", "9"]
       },
       {
         "inputId": "4",
         "questionText": "What type of coding project should you work on if you're trying to show your skills?",
         "correctAnswerId": "10",
-        "possibleAnswerIds": [10, 11, 12]
+        "possibleAnswerInputIds": ["10", "11", "12"]
       },
       {
         "inputId": "5",
         "questionText": "What is a specific recommendation for a basic, boring pet project?",
         "correctAnswerId": "13",
-        "possibleAnswerIds": [13, 14, 15]
+        "possibleAnswerInputIds": ["13", "14", "15"]
       },
       {
         "inputId": "6",
         "questionText": "Which resource is recommended for an open-source educational curriculum?",
         "correctAnswerId": "16",
-        "possibleAnswerIds": [16, 17, 18]
+        "possibleAnswerInputIds": ["16", "17", "18"]
       },
       {
         "inputId": "7",
         "questionText": "What is the 'huge secret' for job search and career advancement?",
         "correctAnswerId": "19",
-        "possibleAnswerIds": [19, 20, 21]
+        "possibleAnswerInputIds": ["19", "20", "21"]
       },
       {
         "inputId": "8",
         "questionText": "What is an example of a cheat code in the job search?",
         "correctAnswerId": "22",
-        "possibleAnswerIds": [22, 23, 24]
+        "possibleAnswerInputIds": ["22", "23", "24"]
       },
       {
         "inputId": "9",
         "questionText": "What is another example of a cheat code in the job search?",
         "correctAnswerId": "25",
-        "possibleAnswerIds": [25, 26, 27]
+        "possibleAnswerInputIds": ["25", "26", "27"]
       },
       {
         "inputId": "10",
         "questionText": "Is it encouraged to use cheat codes in the job search?",
         "correctAnswerId": "28",
-        "possibleAnswerIds": [28, 29]
+        "possibleAnswerInputIds": ["28", "29"]
       }
     ],
     "possibleAnswers": [
       {
-        "inputId": 1,
+        "inputId": "1",
         "text": "Basic, boring pet project"
       },
       {
-        "inputId": 2,
+        "inputId": "2",
         "text": "Interesting, problem-solving project"
       },
       {
-        "inputId": 3,
+        "inputId": "3",
         "text": "Other-oriented project"
       },
       {
-        "inputId": 4,
+        "inputId": "4",
         "text": "Learning new skills and growing your portfolio"
       },
       {
-        "inputId": 5,
+        "inputId": "5",
         "text": "For entertainment purposes only"
       },
       {
-        "inputId": 6,
+        "inputId": "6",
         "text": "As a form of online protest"
       },
       {
-        "inputId": 7,
+        "inputId": "7",
         "text": "Basic, boring pet project"
       },
       {
-        "inputId": 8,
+        "inputId": "8",
         "text": "Interesting, problem-solving project"
       },
       {
-        "inputId": 9,
+        "inputId": "9",
         "text": "Other-oriented project"
       },
       {
-        "inputId": 10,
+        "inputId": "10",
         "text": "Help someone else out and solve their problem or solve your own problem"
       },
       {
-        "inputId": 11,
+        "inputId": "11",
         "text": "Create a game or animation"
       },
       {
-        "inputId": 12,
+        "inputId": "12",
         "text": "Design a website or app"
       },
       {
-        "inputId": 13,
+        "inputId": "13",
         "text": "Blogs"
       },
       {
-        "inputId": 14,
+        "inputId": "14",
         "text": "Mobile applications"
       },
       {
-        "inputId": 15,
+        "inputId": "15",
         "text": "Website templates"
       },
       {
-        "inputId": 16,
+        "inputId": "16",
         "text": "Lateral.ly slides on GitHub"
       },
       {
-        "inputId": 17,
+        "inputId": "17",
         "text": "FreeCodeCamp.org"
       },
       {
-        "inputId": 18,
+        "inputId": "18",
         "text": "Codecademy.com"
       },
       {
-        "inputId": 19,
+        "inputId": "19",
         "text": "Using cheat codes that are industry norms"
       },
       {
-        "inputId": 20,
+        "inputId": "20",
         "text": "Having perfect technical skills"
       },
       {
-        "inputId": 21,
+        "inputId": "21",
         "text": "Getting a prestigious degree"
       },
       {
-        "inputId": 22,
+        "inputId": "22",
         "text": "Social networking"
       },
       {
-        "inputId": 23,
+        "inputId": "23",
         "text": "Joining hackathons"
       },
       {
-        "inputId": 24,
+        "inputId": "24",
         "text": "Acquiring multiple certifications"
       },
       {
-        "inputId": 25,
+        "inputId": "25",
         "text": "Strategic communication"
       },
       {
-        "inputId": 26,
+        "inputId": "26",
         "text": "Creating a blog to showcase your work"
       },
       {
-        "inputId": 27,
+        "inputId": "27",
         "text": "Volunteering for tech events"
       },
       {
-        "inputId": 28,
+        "inputId": "28",
         "text": "Yes"
       },
       {
-        "inputId": 29,
+        "inputId": "29",
         "text": "No"
       }
     ]
