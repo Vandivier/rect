@@ -172,6 +172,7 @@ async def main() -> None:
             prompt_text = transcript_text
 
             with open(f"outputs/prompt-for-{chat_file_substr}.txt", "a") as f:
+                f.write(f"\nunit name: {edu_unit['name']}")
                 f.write(f"\nurl: https://youtube.com/shorts/{video_id}")
                 f.write(f"\ntext: {prompt_text}")
 
