@@ -123,6 +123,7 @@ model FlashCardDeck {
 model QuizResult {
   id     Int     @id @default(autoincrement())
   passed Boolean
+  score  Float
   quiz   Quiz    @relation(fields: [quizId], references: [id])
   quizId Int
   user   User    @relation(fields: [userId], references: [id])

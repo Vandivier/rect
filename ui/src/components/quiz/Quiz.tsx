@@ -1,11 +1,14 @@
-import { useQuery } from "@blitzjs/rpc"
+import { useMutation, useQuery } from "@blitzjs/rpc"
 import { PossibleAnswer } from "@prisma/client"
-import React, { useEffect, useState } from "react"
+import React from "react"
 import { Field, Form } from "react-final-form"
 import getQuizByName from "src/queries/quizzes/getQuizByName"
+import submitQuizResult from "src/mutations/quizResults/submitQuizResult"
 
 type QuizFormValues = {
-  selectedAnswerId: string
+  selectedAnswerIds: {
+    [key: string]: string
+  }
 }
 
 type QuizProps = {
@@ -14,9 +17,20 @@ type QuizProps = {
 
 const Quiz: React.FC<QuizProps> = ({ quizName }) => {
   const [quiz] = useQuery(getQuizByName, { name: quizName })
+  const [submitQuizResultMutation] = useMutation(submitQuizResult)
 
-  const onSubmit = (values: QuizFormValues) => {
-    console.log(values)
+  const onSubmit = async (values: QuizFormValues) => {
+    try {
+      const result = await submitQuizResultMutation({
+        quizId: quiz.id,
+        selectedAnswerIds: Object.fromEntries(
+          Object.entries(values.selectedAnswerIds).map(([key, value]) => [key, value])
+        ),
+      })
+      console.log("Quiz result:", result)
+    } catch (error) {
+      console.error("Failed to submit quiz result:", error)
+    }
   }
 
   if (!quiz) {
@@ -36,7 +50,7 @@ const Quiz: React.FC<QuizProps> = ({ quizName }) => {
                 {quizItem.possibleAnswers.map((possibleAnswer: PossibleAnswer) => (
                   <div key={possibleAnswer.id}>
                     <Field
-                      name="selectedAnswerId"
+                      name={`selectedAnswerIds[${quizItem.id}]`}
                       component="input"
                       type="radio"
                       value={possibleAnswer.inputId}
