@@ -1,10 +1,14 @@
 import React, { useState } from "react"
 import FlashCardDeck from "src/components/flash-cards/FlashCardDeck"
-// import Quiz from "./Quiz"
-import Slideshow from "./Slideshow"
+import Quiz from "src/components/quiz/Quiz"
+import { useCurrentUser } from "src/users/hooks/useCurrentUser"
+
 import ChatAssistant from "./ChatAssistant"
+import LoggedOutCallToAction from "./LoggedOutCallToAction"
+import Slideshow from "./Slideshow"
 
 function MainCallToAction() {
+  const currentUser = useCurrentUser()
   const [selectedComponent, setSelectedComponent] = useState("flashCards")
 
   const handleLinkClick = (component) => {
@@ -18,7 +22,7 @@ function MainCallToAction() {
     }
   }
 
-  return (
+  return currentUser ? (
     <nav role="navigation">
       <ul className="nav-list">
         <li>
@@ -68,8 +72,7 @@ function MainCallToAction() {
       </ul>
 
       {selectedComponent === "flashCards" && <FlashCardDeck />}
-      {selectedComponent === "quiz" && <FlashCardDeck />}
-      {/* {selectedComponent === "quiz" && <Quiz />} */}
+      {selectedComponent === "quiz" && <Quiz quizName="Coding Projects" />}
       {selectedComponent === "slideshow" && <Slideshow />}
       {selectedComponent === "chatAssistant" && <ChatAssistant />}
 
@@ -109,6 +112,8 @@ function MainCallToAction() {
         }
       `}</style>
     </nav>
+  ) : (
+    <LoggedOutCallToAction />
   )
 }
 
