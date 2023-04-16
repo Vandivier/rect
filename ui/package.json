@@ -7,6 +7,7 @@
     "start": "blitz start",
     "studio": "blitz prisma studio",
     "lint": "eslint --ignore-path .gitignore --ext .js,.ts,.tsx .",
+    "seed": "blitz db seed",
     "test": "vitest run --passWithNoTests",
     "test:watch": "vitest",
     "prepare": "cd .. && husky install ui/.husky"

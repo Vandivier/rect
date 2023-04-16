@@ -1,188 +1,190 @@
-{
-  "Quiz": {
-    "id": 1,
-    "quizItemIds": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-    "sourcePlatformId": "YouTube Shorts",
-    "sourcePlatformName": "YouTube Shorts"
-  },
-  "QuizItem": [
-    {
+[
+  {
+    "quiz": {
       "id": 1,
-      "questionText": "What is the first type of coding project mentioned?",
-      "correctAnswerId": "1",
-      "possibleAnswerIds": [1, 2, 3]
+      "quizItemIds": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+      "sourcePlatformId": "YouTube Shorts",
+      "sourcePlatformName": "YouTube Shorts"
     },
-    {
-      "id": 2,
-      "questionText": "What is the primary purpose of building coding projects?",
-      "correctAnswerId": "4",
-      "possibleAnswerIds": [4, 5, 6]
-    },
-    {
-      "id": 3,
-      "questionText": "What type of coding project should you work on if you're trying to grow your skills?",
-      "correctAnswerId": "7",
-      "possibleAnswerIds": [7, 8, 9]
-    },
-    {
-      "id": 4,
-      "questionText": "What type of coding project should you work on if you're trying to show your skills?",
-      "correctAnswerId": "10",
-      "possibleAnswerIds": [10, 11, 12]
-    },
-    {
-      "id": 5,
-      "questionText": "What is a specific recommendation for a basic, boring pet project?",
-      "correctAnswerId": "13",
-      "possibleAnswerIds": [13, 14, 15]
-    },
-    {
-      "id": 6,
-      "questionText": "Which resource is recommended for an open-source educational curriculum?",
-      "correctAnswerId": "16",
-      "possibleAnswerIds": [16, 17, 18]
-    },
-    {
-      "id": 7,
-      "questionText": "What is the 'huge secret' for job search and career advancement?",
-      "correctAnswerId": "19",
-      "possibleAnswerIds": [19, 20, 21]
-    },
-    {
-      "id": 8,
-      "questionText": "What is an example of a cheat code in the job search?",
-      "correctAnswerId": "22",
-      "possibleAnswerIds": [22, 23, 24]
-    },
-    {
-      "id": 9,
-      "questionText": "What is another example of a cheat code in the job search?",
-      "correctAnswerId": "25",
-      "possibleAnswerIds": [25, 26, 27]
-    },
-    {
-      "id": 10,
-      "questionText": "Is it encouraged to use cheat codes in the job search?",
-      "correctAnswerId": "28",
-      "possibleAnswerIds": [28, 29]
-    }
-  ],
-  "PossibleAnswer": [
-    {
-      "id": 1,
-      "text": "Basic, boring pet project"
-    },
-    {
-      "id": 2,
-      "text": "Interesting, problem-solving project"
-    },
-    {
-      "id": 3,
-      "text": "Other-oriented project"
-    },
-    {
-      "id": 4,
-      "text": "Learning new skills and growing your portfolio"
-    },
-    {
-      "id": 5,
-      "text": "For entertainment purposes only"
-    },
-    {
-      "id": 6,
-      "text": "As a form of online protest"
-    },
-    {
-      "id": 7,
-      "text": "Basic, boring pet project"
-    },
-    {
-      "id": 8,
-      "text": "Interesting, problem-solving project"
-    },
-    {
-      "id": 9,
-      "text": "Other-oriented project"
-    },
-    {
-      "id": 10,
-      "text": "Help someone else out and solve their problem or solve your own problem"
-    },
-    {
-      "id": 11,
-      "text": "Create a game or animation"
-    },
-    {
-      "id": 12,
-      "text": "Design a website or app"
-    },
-    {
-      "id": 13,
-      "text": "Blogs"
-    },
-    {
-      "id": 14,
-      "text": "Mobile applications"
-    },
-    {
-      "id": 15,
-      "text": "Website templates"
-    },
-    {
-      "id": 16,
-      "text": "Lateral.ly slides on GitHub"
-    },
-    {
-      "id": 17,
-      "text": "FreeCodeCamp.org"
-    },
-    {
-      "id": 18,
-      "text": "Codecademy.com"
-    },
-    {
-      "id": 19,
-      "text": "Using cheat codes that are industry norms"
-    },
-    {
-      "id": 20,
-      "text": "Having perfect technical skills"
-    },
-    {
-      "id": 21,
-      "text": "Getting a prestigious degree"
-    },
-    {
-      "id": 22,
-      "text": "Social networking"
-    },
-    {
-      "id": 23,
-      "text": "Joining hackathons"
-    },
-    {
-      "id": 24,
-      "text": "Acquiring multiple certifications"
-    },
-    {
-      "id": 25,
-      "text": "Strategic communication"
-    },
-    {
-      "id": 26,
-      "text": "Creating a blog to showcase your work"
-    },
-    {
-      "id": 27,
-      "text": "Volunteering for tech events"
-    },
-    {
-      "id": 28,
-      "text": "Yes"
-    },
-    {
-      "id": 29,
-      "text": "No"
-    }
-  ]
-}
+    "quizItems": [
+      {
+        "id": 1,
+        "questionText": "What is the first type of coding project mentioned?",
+        "correctAnswerId": "1",
+        "possibleAnswerIds": [1, 2, 3]
+      },
+      {
+        "id": 2,
+        "questionText": "What is the primary purpose of building coding projects?",
+        "correctAnswerId": "4",
+        "possibleAnswerIds": [4, 5, 6]
+      },
+      {
+        "id": 3,
+        "questionText": "What type of coding project should you work on if you're trying to grow your skills?",
+        "correctAnswerId": "7",
+        "possibleAnswerIds": [7, 8, 9]
+      },
+      {
+        "id": 4,
+        "questionText": "What type of coding project should you work on if you're trying to show your skills?",
+        "correctAnswerId": "10",
+        "possibleAnswerIds": [10, 11, 12]
+      },
+      {
+        "id": 5,
+        "questionText": "What is a specific recommendation for a basic, boring pet project?",
+        "correctAnswerId": "13",
+        "possibleAnswerIds": [13, 14, 15]
+      },
+      {
+        "id": 6,
+        "questionText": "Which resource is recommended for an open-source educational curriculum?",
+        "correctAnswerId": "16",
+        "possibleAnswerIds": [16, 17, 18]
+      },
+      {
+        "id": 7,
+        "questionText": "What is the 'huge secret' for job search and career advancement?",
+        "correctAnswerId": "19",
+        "possibleAnswerIds": [19, 20, 21]
+      },
+      {
+        "id": 8,
+        "questionText": "What is an example of a cheat code in the job search?",
+        "correctAnswerId": "22",
+        "possibleAnswerIds": [22, 23, 24]
+      },
+      {
+        "id": 9,
+        "questionText": "What is another example of a cheat code in the job search?",
+        "correctAnswerId": "25",
+        "possibleAnswerIds": [25, 26, 27]
+      },
+      {
+        "id": 10,
+        "questionText": "Is it encouraged to use cheat codes in the job search?",
+        "correctAnswerId": "28",
+        "possibleAnswerIds": [28, 29]
+      }
+    ],
+    "possibleAnswers": [
+      {
+        "id": 1,
+        "text": "Basic, boring pet project"
+      },
+      {
+        "id": 2,
+        "text": "Interesting, problem-solving project"
+      },
+      {
+        "id": 3,
+        "text": "Other-oriented project"
+      },
+      {
+        "id": 4,
+        "text": "Learning new skills and growing your portfolio"
+      },
+      {
+        "id": 5,
+        "text": "For entertainment purposes only"
+      },
+      {
+        "id": 6,
+        "text": "As a form of online protest"
+      },
+      {
+        "id": 7,
+        "text": "Basic, boring pet project"
+      },
+      {
+        "id": 8,
+        "text": "Interesting, problem-solving project"
+      },
+      {
+        "id": 9,
+        "text": "Other-oriented project"
+      },
+      {
+        "id": 10,
+        "text": "Help someone else out and solve their problem or solve your own problem"
+      },
+      {
+        "id": 11,
+        "text": "Create a game or animation"
+      },
+      {
+        "id": 12,
+        "text": "Design a website or app"
+      },
+      {
+        "id": 13,
+        "text": "Blogs"
+      },
+      {
+        "id": 14,
+        "text": "Mobile applications"
+      },
+      {
+        "id": 15,
+        "text": "Website templates"
+      },
+      {
+        "id": 16,
+        "text": "Lateral.ly slides on GitHub"
+      },
+      {
+        "id": 17,
+        "text": "FreeCodeCamp.org"
+      },
+      {
+        "id": 18,
+        "text": "Codecademy.com"
+      },
+      {
+        "id": 19,
+        "text": "Using cheat codes that are industry norms"
+      },
+      {
+        "id": 20,
+        "text": "Having perfect technical skills"
+      },
+      {
+        "id": 21,
+        "text": "Getting a prestigious degree"
+      },
+      {
+        "id": 22,
+        "text": "Social networking"
+      },
+      {
+        "id": 23,
+        "text": "Joining hackathons"
+      },
+      {
+        "id": 24,
+        "text": "Acquiring multiple certifications"
+      },
+      {
+        "id": 25,
+        "text": "Strategic communication"
+      },
+      {
+        "id": 26,
+        "text": "Creating a blog to showcase your work"
+      },
+      {
+        "id": 27,
+        "text": "Volunteering for tech events"
+      },
+      {
+        "id": 28,
+        "text": "Yes"
+      },
+      {
+        "id": 29,
+        "text": "No"
+      }
+    ]
+  }
+]

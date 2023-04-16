@@ -74,11 +74,10 @@ model FlashCard {
 }
 
 model PossibleAnswer {
-  id         Int      @id @default(autoincrement())
-  text       String
-  quizItemId Int
-  quizItem   QuizItem @relation(fields: [quizItemId], references: [id])
-
+  id                 Int       @id @default(autoincrement())
+  text               String
+  quizItemId         Int
+  quizItem           QuizItem  @relation(fields: [quizItemId], references: [id], name: "PossibleAnswersToQuizItem")
   isCorrectAnswerFor QuizItem? @relation("CorrectAnswerToQuizItem")
   correctAnswerForId Int?
 }
@@ -86,17 +85,16 @@ model PossibleAnswer {
 model QuizItem {
   id              Int              @id @default(autoincrement())
   questionText    String
-  possibleAnswers PossibleAnswer[]
-
-  correctAnswer   PossibleAnswer @relation(fields: [correctAnswerId], references: [id], name: "CorrectAnswerToQuizItem")
-  correctAnswerId Int            @unique
-  Quiz            Quiz?          @relation(fields: [quizId], references: [id])
-  quizId          Int?
+  possibleAnswers PossibleAnswer[] @relation("PossibleAnswersToQuizItem")
+  correctAnswer   PossibleAnswer   @relation(fields: [correctAnswerId], references: [id], name: "CorrectAnswerToQuizItem")
+  correctAnswerId Int              @unique
+  quiz            Quiz?            @relation(fields: [quizId], references: [id], name: "QuizItemsToQuiz")
+  quizId          Int
 }
 
 model Quiz {
   id                 Int              @id @default(autoincrement())
-  quizItems          QuizItem[]
+  quizItems          QuizItem[]       @relation("QuizItemsToQuiz")
   sourcePlatformId   String
   sourcePlatformName String
   CurriculumUnit     CurriculumUnit[]
