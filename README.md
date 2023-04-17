@@ -2,7 +2,7 @@
 
 What's the point of rect? There are four points, as in a rectangle!
 
-🎥 [Video overview here!](https://www.youtube.com/watch?v=Nx4z97DaK0s) 🎥
+🎥 [Video overview here!](https://youtu.be/w9XzoywlsUk) 🎥
 
 Rect is an AI-powered tool for transforming social content into educational material!
 
