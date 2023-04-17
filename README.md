@@ -16,6 +16,8 @@ This application is an entry into the [2023 Supabase Hackathon on the theme of A
 
 Get Rect!! or smth... plz pr a better tagline
 
+~20 hour long [YouTube Playlist for hackathon live coding here](https://youtube.com/playlist?list=PL4hsXTgWARMzhf6cSFYOC_3AzzMUVkuU_)!
+
 ## table of contents 📚
 
 1. background
