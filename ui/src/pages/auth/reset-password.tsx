@@ -10,7 +10,7 @@ import Link from "next/link"
 
 const ResetPasswordPage: BlitzPage = () => {
   const router = useRouter()
-  const token = router.query.token?.toString()
+  const token = router.query.token?.toString() || ""
   const [resetPasswordMutation, { isSuccess }] = useMutation(resetPassword)
 
   return (

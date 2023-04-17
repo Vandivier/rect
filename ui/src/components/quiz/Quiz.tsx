@@ -79,8 +79,8 @@ const Quiz: React.FC<QuizProps> = ({ quizName }) => {
             <>
               😢 Better luck next time. 😢
               <p>
-                Keep going and get smarter, and you'll do better next time! Your score was{" "}
-                {result.score}%.
+                Practice makes perfect. Try some flash cards, get some rest, keep trying, and set a
+                new record next time! Your score was {result.score}%.
               </p>
             </>
           )}

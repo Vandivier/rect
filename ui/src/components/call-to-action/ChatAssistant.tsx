@@ -7,6 +7,7 @@ const ChatAssistant = () => (
         To do this, simply paste{" "}
         <a
           href="https://github.com/Vandivier/rect/blob/main/be/transcript_service/outputs/prompt-for-chat.txt"
+          rel="noreferrer"
           target="_blank"
         >
           this prompt for chat file
@@ -16,7 +17,11 @@ const ChatAssistant = () => (
       </p>
       <p>
         Learn more about how to customize this prompt based on your own social media content in this{" "}
-        <a href="https://github.com/Vandivier/rect/tree/main/be/transcript_service" target="_blank">
+        <a
+          href="https://github.com/Vandivier/rect/tree/main/be/transcript_service"
+          rel="noreferrer"
+          target="_blank"
+        >
           README.md file for the open source Rect Transcript Service
         </a>
         !

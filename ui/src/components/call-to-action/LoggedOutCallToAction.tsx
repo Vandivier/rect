@@ -10,6 +10,7 @@ const LoggedOutCallToAction = () => (
         Educational content is based on the{" "}
         <a
           href="https://github.com/Vandivier/ladderly-slides"
+          rel="noreferrer"
           style={{ textDecoration: "underline" }}
           target="_blank"
         >
