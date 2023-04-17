@@ -1,6 +1,18 @@
 # rect by [ladderly](https://ladderly.io/) 🚀
 
-ai-assisted transformer from social content to open educational material
+What's the point of rect? There are four points, as in a rectangle!
+
+🎥 Video overview here! 🎥
+
+Rect is an AI-powered tool for transforming social content into educational material!
+
+Rect takes short-form social media content as an input, and produces four kinds of educational output material. Specifically, Rect is an AI-powered assistant that will produce flash cards, quizzes, slideshows, and a chatbot assistant.
+
+Rect accomplishes this by applying LLM transformation onto transcripted social media content like YouTube shorts, TikTok videos, Instagram reels, and more!
+
+This application is an entry into the [2023 Supabase Hackathon on the theme of AI](https://supabase.com/blog/launch-week-7-hackathon).
+
+<img src="./ui/public/rect-rectangular.png" alt="Rect Logo" width="100"/>
 
 Get Rect!! or smth... plz pr a better tagline
 
@@ -29,46 +41,23 @@ The term `rect` comes from the fact that this application has four main points, 
 
 ## design 🧑‍🎨
 
-(totally subject to radical change)
+Rect is a monorepo combining a Blitz.js app and Python scripts for data engineering.
 
-2 main components:
+The main use case is to combine these tools, but you could use them independently if you want.
 
-1. a runtime (flash cards, quiz web gui)
-2. a build process (ML inputs -> outputs process, stored offline or in supabase)
+The `ui` Blitz.js app, which is actually a fullstack TypeScript app, empowers users to consume educational material, study, learn, take exams, and showscase those accomplishments in a public profile.
 
-for the hackathon, we are prioritizing quiz generation because it pairs nicely with using Supabase. Ideally we get to all features, but this is the initial North Star. AI stuff in Python, GUIs in React+TypeScript using Blitz stack+Prisma+Supabase.
+The `be` Python logic takes YouTube Shorts specified into educational curriculum units and produces output that can serve as seed data for the `ui` app, or used for other purposes.
 
-1. TikToks are uploaded to Google Drive via [Repurpose.io](https://repurpose.io/)
-   a. in the future maybe Repurpose isn't needed if we open source a TikTok scraper, but for now let's let them do the heavy lifting and we get the nice Google API interface.
+Both the `be` and `ui` folders have their own additional `README.md` files with more detail!
 
-2. Somehow we transcribe the TikToks
-   a. planning to use [Whisper from OpenAI](https://www.youtube.com/watch?v=ABFqbY_rmEk). We can use it as a service, or also we can have a local offline free version. Be sure to limit usage in either case until the dev pipeline works, then scale up videos later, bc i have thousands of tiktoks. Let's start with 1-10 and subsequent runs will take 10 away from the untranscribed ladderly-slides.
-   b. in an alternative or complimentary design (out of hackathon scope), we could use a video summarizer AI instead of a transcriber followed by an LLM tool. many tiktok videos have a ton of value that is not discernable through audio transcription alone. Text on the screen and imagery are examples of TikTok info not communicated by transcription.
+How can this app support sources other than YouTube Shorts? Through [Repurpose.io](https://repurpose.io/)! Content creators on all sorts of short-form content platforms can leverage that tool to get their content into YouTube Short form, and rect can take it from there.
 
-3. Text sources are compiled and shoved into an LLM
-   a. text sources include TikTok transcriptions, the current state of [ladderly-slides](https://github.com/Vandivier/ladderly-slides), and maybe other sources like an arbitrary file (that would also be open sourced ofc).
-   b. a notable other source would be the content of articles that are merely linked within ladderly-slides. We could use a web url AI/LLM retrieval agent to automate this task. [5 to 23 patterns](https://hackernoon.com/5-to-23-patterns-to-ace-any-coding-interview) is a great example article, and [here's an example](https://huggingface.co/spaces/deepset/retrieval-augmentation-svb) of an LLM with web url retrieval augmentation.
-   c. ong i don't know which LLM to use rn. plz help. gpt4all? [Vicuna](https://www.reddit.com/r/ArtificialInteligence/comments/12dpzzb/vicuna_is_the_best_free_llm_right_now_full_pc/)? smth else?
-
-4. Tuned prompts are used to generate outputs of interest.
-   a. probably we need to store them in Supabase unless we are going to have this all stored locally. Supabase would help crash proof. We can also use "pause and resume" logic to help crash proof.
-   b. seems like in the long run we want to support both, but idk for the hackathon.
-
-5. Some validation or massing logic
-6. presentable in a GUI for flash cards and the quiz etc
-7. if we make a cert, definitaly real users that received the cert would have db account info that is not open sourced. maybe we can make two versions or smth and split fully offline-capable components out
+In the future, `be` could be extended to directly use OpenAI's Whisper, or other tools, to generate content directly from other sources without using `Repurpose.io` or the `YouTubeTranscriptApi`.
 
 #### how are we using supabase?
 
-we are using it for auth, and also maybe a few other things:
-
-1. save versions of inputs and outputs
-2. save the current version of runtime data (eg current flashcards)
-3. save who passed what version of quiz/cert
-
-## running the app 🏃
-
-This repo is organized as a monorepo. Each component subfolder of this project root has its own README with run instructions for that particular component.
+Currently, `rect-ui` uses Supabase as a runtime data store for authentication, storing quizzes, allowing users to take quizzes, save the results of their quiz attempts, and which quizzes they have passed. This is well-positioned for feature-rich extension in the future.
 
 ## contributing 💖
 
