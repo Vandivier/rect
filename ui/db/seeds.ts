@@ -1,5 +1,5 @@
 // ref: https://www.prisma.io/docs/guides/migrate/seed-database
-import db, { Prisma, Quiz, QuizItem, PossibleAnswer } from "./index"
+import db, { Prisma, Quiz, QuizItem } from "./index"
 import quizzes from "../../be/transcript_service/outputs/quizzes.json"
 
 const seed = async () => {

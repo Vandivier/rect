@@ -31,7 +31,7 @@ function MainCallToAction() {
             onClick={() => handleLinkClick("flashCards")}
             onKeyDown={(event) => handleKeyDown(event, "flashCards")}
             role="button"
-            aria-current={selectedComponent === "flashCards" ? "page" : null}
+            aria-current={selectedComponent === "flashCards"}
           >
             Flash Cards
           </button>
@@ -42,7 +42,7 @@ function MainCallToAction() {
             onClick={() => handleLinkClick("quiz")}
             onKeyDown={(event) => handleKeyDown(event, "quiz")}
             role="button"
-            aria-current={selectedComponent === "quiz" ? "page" : null}
+            aria-current={selectedComponent === "quiz"}
           >
             Quiz
           </button>
@@ -53,7 +53,7 @@ function MainCallToAction() {
             onClick={() => handleLinkClick("slideshow")}
             onKeyDown={(event) => handleKeyDown(event, "slideshow")}
             role="button"
-            aria-current={selectedComponent === "slideshow" ? "page" : null}
+            aria-current={selectedComponent === "slideshow"}
           >
             Slideshow
           </button>
@@ -64,7 +64,7 @@ function MainCallToAction() {
             onClick={() => handleLinkClick("chatAssistant")}
             onKeyDown={(event) => handleKeyDown(event, "chatAssistant")}
             role="button"
-            aria-current={selectedComponent === "chatAssistant" ? "page" : null}
+            aria-current={selectedComponent === "chatAssistant"}
           >
             Chat Assistant
           </button>

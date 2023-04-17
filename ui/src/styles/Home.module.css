@@ -107,7 +107,7 @@
   color: rgb(57, 33, 97);
 }
 
-.code pre {
+.code p {
   background: rgba(124, 58, 237, 12%);
   border-radius: 4px;
   padding: 0.7em 1.4em;

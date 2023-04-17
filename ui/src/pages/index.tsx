@@ -8,6 +8,7 @@ import Tooltip from "src/core/components/tooltip/Tooltip"
 import Layout from "src/core/layouts/Layout"
 import styles from "src/styles/Home.module.css"
 import { useCurrentUser } from "src/users/hooks/useCurrentUser"
+import Image from "next/image"
 
 const ProfileLink = () => {
   const currentUser = useCurrentUser()
@@ -86,6 +87,10 @@ const Home: BlitzPage = () => {
             <div className={styles.header}>
               <h1>Welcome to Rect! 🎉🎉</h1>
 
+              <div style={{ margin: "-20px auto" }}>
+                <Image src="/rect-pop-logo.png" alt="Rect logo" width={80} height={80} />
+              </div>
+
               <Suspense>
                 <MainCallToAction />
               </Suspense>
@@ -106,30 +111,30 @@ const Home: BlitzPage = () => {
                 <div>
                   <div className={styles.code}>
                     <span>1</span>
-                    <pre>
+                    <p>
                       <code>Sign up and login!</code>
-                    </pre>
+                    </p>
                   </div>
 
                   <div className={styles.code}>
                     <span>2</span>
-                    <pre>
+                    <p>
                       <code>Start studying with a flash ⚡🔥 card deck</code>
-                    </pre>
+                    </p>
                   </div>
 
                   <div className={styles.code}>
                     <span>3</span>
-                    <pre>
+                    <p>
                       <code>Pass an 🎓 exam</code>
-                    </pre>
+                    </p>
                   </div>
 
                   <div className={styles.code}>
                     <span>4</span>
-                    <pre>
+                    <p>
                       <code>Share your achievements with a public profile! 🙌</code>
-                    </pre>
+                    </p>
                   </div>
                 </div>
               </div>
